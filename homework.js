@@ -22,6 +22,9 @@ const ADMIN_TOKEN = process.env.API_KEY;
  * @returns {Promise<Array>} - 回傳 products 陣列
  */
 async function getProducts() {
+	const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/products`);
+	const data = await response.json(); 
+	return data.products;
 	// 請實作此函式
 	// 提示：
 	// 1. 使用 fetch() 發送 GET 請求
@@ -35,6 +38,13 @@ async function getProducts() {
  */
 async function getCart() {
 	// 請實作此函式
+	const response = await fetch(`${BASE_URL}/api/livejs/v1/customer/${API_PATH}/carts`);
+	const data = await response.json(); 
+	return {
+		carts: data.carts,
+		total: data.total,
+		finalTotal: data.finalTotal
+	};
 }
 
 /**
